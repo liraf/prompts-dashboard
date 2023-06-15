@@ -1,6 +1,5 @@
 <template>
-  <div class="">
-    a
+  <div class="text-white">
   </div>
 </template>
 
