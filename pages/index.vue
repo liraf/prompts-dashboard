@@ -1,6 +1,6 @@
 <template>
-  <div class="text-white">
-    <h2 class="mb-4">Test Headliner</h2>
+  <div class="text-white pt-12">
+    <h2 class="mb-4 text-lg font-medium">Prompts Dashboard</h2>
     <Prompt />
 
     <div class="flex mb-4">
