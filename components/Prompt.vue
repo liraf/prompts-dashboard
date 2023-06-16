@@ -1,11 +1,23 @@
 <template>
-  <div class="w-full bg-white px-4 py-4 rounded-lg text-blue-950">
-    <h3 class="mb-2">Prompt</h3>
+  <Card title="Prompt" class="mb-4">
     <CustomTextarea />
-    <div class="mt-2">Tokens: <b>{{ tokens }}</b></div>
+    <Tokens />
+  </Card>
+  <div class="flex mb-4">
+    <Card title="Inputs" class="mr-2">
+      <Pill v-for="text in inputs" :key="text" :text="text" />
+      <Input class="mt-2" />
+    </Card>
+    <Card title="Preview" class="ml-2">
+      <p>{{ preview }}</p>
+      <Tokens />
+    </Card>
   </div>
+  <Card title="Completion">
+  </Card>
 </template>
 
 <script setup>
-const tokens = ref(22)
+const preview = ref("Given the following fruit Bananaasd, output the closest color hex value that matches the color of the")
+const inputs = ref(['fruit', 'vegetable'])
 </script>
