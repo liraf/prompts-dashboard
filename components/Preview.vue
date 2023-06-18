@@ -1,10 +1,13 @@
 <template>
   <Card title="Preview" class="ml-2">
-    <p>{{ preview }}</p>
+    <div class="whitespace-pre-wrap" v-html="prompt" />
     <Tokens />
   </Card>
 </template>
 
-<script setup>
-const preview = ref("Given the following fruit Banana, output the closest color hex value that matches the color of the")
+<script setup lang="ts">
+interface PreviewProps {
+  prompt: string
+}
+const { prompt } = defineProps<PreviewProps>()
 </script>

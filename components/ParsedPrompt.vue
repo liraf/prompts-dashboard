@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['click', 'variables-update'])
+const emit = defineEmits(['click', 'variables-update', 'prompt-update'])
 
 interface ParsedPromptProps {
   prompt: string
@@ -26,9 +26,10 @@ const parsedPrompt = computed(() => {
     newParsedPrompt = newParsedPrompt.split(variable).join(`<span class="${pillClassName} bg-blue-400">${variable.slice(2,-2).trim()}</span>`)
   })
 
-  emit('variables-update', variables)
-
   newParsedPrompt += `<span class="${pillClassName} bg-blue-950">completion</span>`
+
+  emit('variables-update', variables)
+  emit('prompt-update', newParsedPrompt)
 
   return newParsedPrompt
 })

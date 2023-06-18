@@ -1,11 +1,14 @@
 <template>
   <div class="text-white pt-12">
     <h2 class="mb-4 text-lg font-medium">Prompts Dashboard</h2>
-    <Prompt @variables-update="(newVariables) => variables = newVariables" />
+    <Prompt
+      @variables-update="(newVariables) => variables = newVariables"
+      @prompt-update="(newPrompt) => prompt = newPrompt"
+    />
 
     <div class="flex mb-4">
       <Inputs :variables="variables" />
-      <Preview />
+      <Preview :prompt="prompt" />
     </div>
     <ActionBar class="mb-4" />
 
@@ -15,4 +18,5 @@
 
 <script setup>
 const variables = ref([])
+const prompt = ref('')
 </script>
