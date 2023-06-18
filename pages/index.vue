@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white pt-12">
+  <div class="text-white py-12">
     <h2 class="mb-4 text-lg font-medium">Prompts Dashboard</h2>
     <Prompt
       @variables-update="(newVariables) => variables = newVariables"
