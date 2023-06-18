@@ -13,7 +13,8 @@ module.exports = {
   theme: {
     colors: {
       blue: {
-        950: '#0c131f'
+        950: '#0c131f',
+        400: '#3f75ff',
       },
       transparent: 'transparent',
       current: 'currentColor',

@@ -19,12 +19,14 @@ const parsedPrompt = computed(() => {
   let newParsedPrompt = prompt
 
   // TODO: Use the 'Pill' component
-  const pillClassName = 'rounded-full px-3 py-1 bg-blue-950 text-white inline'
+  const pillClassName = 'rounded-full px-3 py-1 text-white inline'
 
   const variables = newParsedPrompt.match(/\{{[a-zA-Z0-9_ ]*}}/g)
   variables?.forEach((variable) => {
-    newParsedPrompt = newParsedPrompt.split(variable).join(`<span class="${pillClassName}">${variable.slice(2,-2).trim()}</span>`)
+    newParsedPrompt = newParsedPrompt.split(variable).join(`<span class="${pillClassName} bg-blue-400">${variable.slice(2,-2).trim()}</span>`)
   })
+
+  newParsedPrompt += `<span class="${pillClassName} bg-blue-950">completion</span>`
 
   return newParsedPrompt
 })

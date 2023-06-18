@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-const prompt = ref('')
+const prompt = ref('Given the following fruit, output the closest color hex value that matches the color of that fruit.\n\nFruit:\n{{ fruit }}\n\nColor hex string:\n')
 const isFocused = ref(false)
 const textareaRef = ref()
 </script>
