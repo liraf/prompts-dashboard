@@ -7,22 +7,17 @@
 </template>
 
 <script setup lang="ts">
+import { parsePrompt } from '~/helpers'
+
 const rawPrompt = useState<string>('rawPrompt')
 const parsedPrompt = useState<string>('parsedPrompt', () => '')
 const promptVariables = useState<string[]>('promptVariables', () => [])
 
 watchEffect(() => {
-  let newParsedPrompt = rawPrompt?.value
-
-  // TODO: Use the 'Pill' component
-  const pillClassName = 'rounded-full px-3 py-1 text-white inline'
-
-  const variables = newParsedPrompt.match(/\{{[a-zA-Z0-9_ ]*}}/g) as string[]
-  variables?.forEach((variable) => {
-    newParsedPrompt = newParsedPrompt.split(variable).join(`<span class="${pillClassName} bg-blue-400">${variable.slice(2,-2).trim()}</span>`)
-  })
-
-  newParsedPrompt += `<span class="${pillClassName} bg-blue-950">completion</span>`
+  const { newParsedPrompt, variables } = parsePrompt(
+    rawPrompt?.value,
+    `<span class="rounded-full px-3 py-1 text-white inline bg-blue-400">{var}</span>`
+  )
 
   parsedPrompt.value = newParsedPrompt
   promptVariables.value = variables
