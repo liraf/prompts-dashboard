@@ -4,11 +4,19 @@
     <Prompt />
 
     <div class="flex mb-4">
-      <Inputs />
-      <Preview />
+      <Inputs @update-variable="handleUpdateVariable" />
+      <Preview :variablesWithValues="variablesWithValues" />
     </div>
     <ActionBar class="mb-4" />
 
     <Completion />
   </div>
 </template>
+
+<script setup lang="ts">
+const variablesWithValues = reactive<{[key:string]: string}>({})
+
+const handleUpdateVariable = (variable: string, value: string) => {
+  variablesWithValues[variable] = value
+}
+</script>

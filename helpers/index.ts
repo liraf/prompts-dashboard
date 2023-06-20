@@ -2,7 +2,7 @@ interface ParsePromptReturn {
   newParsedPrompt: string,
   variables: string[]
 }
-export const parsePrompt = (prompt: string, variableReplace: string): ParsePromptReturn => {
+export const parsePrompt = (prompt: string, variableReplace: string, variableValues?: {[key:string]: string}): ParsePromptReturn => {
   let newParsedPrompt = prompt
 
   // TODO: Use the 'Pill' component
@@ -10,7 +10,7 @@ export const parsePrompt = (prompt: string, variableReplace: string): ParsePromp
 
   const variables = newParsedPrompt.match(/\{{[a-zA-Z0-9_ ]*}}/g) as string[]
   variables?.forEach((variable) => {
-    newParsedPrompt = newParsedPrompt.split(variable).join(variableReplace.replace('{var}', variable.slice(2,-2).trim()))
+    newParsedPrompt = newParsedPrompt.split(variable).join(variableReplace.replace('{var}', (variableValues ? variableValues[variable] : variable.slice(2,-2).trim()) || ''))
   })
 
   newParsedPrompt += `<span class="${pillClassName} bg-blue-950">completion</span>`

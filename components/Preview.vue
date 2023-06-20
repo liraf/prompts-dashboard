@@ -9,13 +9,20 @@
 import { parsePrompt } from '~/helpers'
 import { useStateKeys } from '~/helpers/consts'
 
+
+interface PreviewProps {
+  variablesWithValues: {[key:string]: string}
+}
+const { variablesWithValues } = defineProps<PreviewProps>()
+
 const rawPrompt = useState<string>(useStateKeys.RAW_PROMPT)
 const previewPrompt = useState<string>(useStateKeys.PREVIEW_PROMPT, () => '')
 
 watchEffect(() => {
   const { newParsedPrompt } = parsePrompt(
     rawPrompt?.value,
-    `<span class="text-blue-400">{var}</span>`
+    `<span class="text-blue-400">{var}</span>`,
+    variablesWithValues
   )
 
   previewPrompt.value = newParsedPrompt
