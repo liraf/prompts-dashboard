@@ -8,10 +8,11 @@
 
 <script setup lang="ts">
 import { parsePrompt } from '~/helpers'
+import { useStateKeys } from '~/helpers/consts'
 
-const rawPrompt = useState<string>('rawPrompt')
-const parsedPrompt = useState<string>('parsedPrompt', () => '')
-const promptVariables = useState<string[]>('promptVariables', () => [])
+const rawPrompt = useState<string>(useStateKeys.RAW_PROMPT)
+const parsedPrompt = useState<string>(useStateKeys.PARSED_PROMPT, () => '')
+const promptVariables = useState<string[]>(useStateKeys.PROMPT_VARIABLES, () => [])
 
 watchEffect(() => {
   const { newParsedPrompt, variables } = parsePrompt(

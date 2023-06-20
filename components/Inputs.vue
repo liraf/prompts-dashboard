@@ -10,5 +10,7 @@
 </template>
 
 <script setup lang="ts">
-const promptVariables = useState<string[]>('promptVariables')
+import { useStateKeys } from '~/helpers/consts'
+
+const promptVariables = useState<string[]>(useStateKeys.PROMPT_VARIABLES)
 </script>
