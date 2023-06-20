@@ -7,30 +7,24 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['click', 'variables-update', 'prompt-update'])
+const rawPrompt = useState<string>('rawPrompt')
+const parsedPrompt = useState<string>('parsedPrompt', () => '')
+const promptVariables = useState<string[]>('promptVariables', () => [])
 
-interface ParsedPromptProps {
-  prompt: string
-}
-
-const { prompt } = defineProps<ParsedPromptProps>()
-
-const parsedPrompt = computed(() => {
-  let newParsedPrompt = prompt
+watchEffect(() => {
+  let newParsedPrompt = rawPrompt?.value
 
   // TODO: Use the 'Pill' component
   const pillClassName = 'rounded-full px-3 py-1 text-white inline'
 
-  const variables = newParsedPrompt.match(/\{{[a-zA-Z0-9_ ]*}}/g)
+  const variables = newParsedPrompt.match(/\{{[a-zA-Z0-9_ ]*}}/g) as string[]
   variables?.forEach((variable) => {
     newParsedPrompt = newParsedPrompt.split(variable).join(`<span class="${pillClassName} bg-blue-400">${variable.slice(2,-2).trim()}</span>`)
   })
 
   newParsedPrompt += `<span class="${pillClassName} bg-blue-950">completion</span>`
 
-  emit('variables-update', variables)
-  emit('prompt-update', newParsedPrompt)
-
-  return newParsedPrompt
+  parsedPrompt.value = newParsedPrompt
+  promptVariables.value = variables
 })
 </script>
