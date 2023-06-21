@@ -6,12 +6,7 @@
         <CustomSelect class="w-1/2" label="Model" :options="modelOptions"/>
       </div>
       <div class="flex items-center justify-end w-1/2">
-        <CustomButton @click="$emit('run')">
-          RUN
-        </CustomButton>
-        <CustomButton class="ml-2">
-          SAVE
-        </CustomButton>
+        <CustomButton @click="$emit('run')">RUN</CustomButton>
       </div>
     </div>
   </Card>
