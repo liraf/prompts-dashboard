@@ -1,5 +1,5 @@
 <template>
-  <Card title="Inputs" class="mr-2">
+  <Card title="Inputs" class="mb-4 md:mb-0 md:mr-2">
     <template v-for="(text, index) in promptVariables" :key="index">
       <div :class="index < promptVariables.length - 1 ? 'mb-4' : ''">
         <Pill :text="text.slice(2,-2).trim()" />

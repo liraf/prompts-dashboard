@@ -1,5 +1,5 @@
 <template>
-  <Card title="Preview" class="ml-2">
+  <Card title="Preview" class="md:ml-2">
     <div class="whitespace-pre-wrap" v-html="previewPrompt" />
   </Card>
 </template>

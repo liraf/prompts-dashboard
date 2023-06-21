@@ -3,7 +3,7 @@
     <h2 class="mb-4 text-lg font-medium">Prompts Dashboard</h2>
     <Prompt />
 
-    <div class="flex mb-4">
+    <div class="flex flex-col md:flex-row mb-4">
       <Inputs @update-variable="handleUpdateVariable" />
       <Preview :variablesWithValues="variablesWithValues" />
     </div>
