@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { toast } from 'vue3-toastify';
 import { useStateKeys } from '~/helpers/consts';
 
@@ -32,8 +32,12 @@ const runPrompt = async () => {
       prompt: previewPrompt?.value
     })
     console.log(result)
-  } catch (error) {
-    toast.error(error?.response?.data?.message)
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error))  {
+      toast.error(error?.response?.data.message)
+    } else {
+      toast.error('An error has occured while fetching the completion. Try again later.')
+    }
   }
 }
 </script>
