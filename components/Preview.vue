@@ -9,7 +9,6 @@
 import { parsePrompt } from '~/helpers'
 import { useStateKeys } from '~/helpers/consts'
 
-
 interface PreviewProps {
   variablesWithValues: {[key:string]: string}
 }

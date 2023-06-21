@@ -6,7 +6,7 @@
         <CustomSelect class="w-1/2" label="Model" :options="modelOptions"/>
       </div>
       <div class="flex items-center justify-end w-1/2">
-        <CustomButton>
+        <CustomButton @click="$emit('run')">
           RUN
         </CustomButton>
         <CustomButton class="ml-2">
@@ -18,6 +18,8 @@
 </template>
 
 <script setup lang="ts">
+defineEmits(['run'])
+
 const familyOptions = ref([
   {
     value: 'GPT-3',
