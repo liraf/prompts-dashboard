@@ -20,6 +20,7 @@ import { useStateKeys } from '~/helpers/consts';
 
 const variablesWithValues = reactive<{[key:string]: string}>({})
 const previewPrompt = useState<string>(useStateKeys.PREVIEW_PROMPT)
+const selectedModel = useState(useStateKeys.SELECTED_MODEL)
 
 const handleUpdateVariable = (variable: string, value: string) => {
   variablesWithValues[variable] = value
@@ -28,7 +29,7 @@ const handleUpdateVariable = (variable: string, value: string) => {
 const runPrompt = async () => {
   try {
     const result = await axios.post('/api/completion', {
-      model: 'text-davinci-003',
+      model: selectedModel?.value,
       prompt: previewPrompt?.value
     })
     console.log(result)
