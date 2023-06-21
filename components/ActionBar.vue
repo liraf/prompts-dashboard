@@ -5,7 +5,7 @@
         <CustomSelect class="w-1/2 mr-2" label="Model" :options="families" @change="(event) => selectedModel = event.target?.value"/>
       </div>
       <div class="flex items-center justify-end w-1/2">
-        <CustomButton @click="$emit('run')">RUN</CustomButton>
+        <CustomButton @click="$emit('run')" :loading="isLoadingCompletion">RUN</CustomButton>
       </div>
     </div>
   </Card>
@@ -17,6 +17,7 @@ import { useStateKeys } from '~/helpers/consts';
 defineEmits(['run'])
 
 const selectedModel = useState(useStateKeys.SELECTED_MODEL, () => 'text-davinci-003')
+const isLoadingCompletion = useState<boolean>(useStateKeys.LOADING_COMPLETION)
 
 const families = reactive([
   {

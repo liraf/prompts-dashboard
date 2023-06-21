@@ -23,6 +23,7 @@ const variablesWithValues = reactive<{[key:string]: string}>({})
 const rawPrompt = useState<string>(useStateKeys.RAW_PROMPT)
 const selectedModel = useState(useStateKeys.SELECTED_MODEL)
 const completion = useState(useStateKeys.COMPLETION, () => '')
+const isLoadingCompletion = useState(useStateKeys.LOADING_COMPLETION, () => false)
 
 const handleUpdateVariable = (variable: string, value: string) => {
   variablesWithValues[variable] = value
@@ -31,6 +32,7 @@ const handleUpdateVariable = (variable: string, value: string) => {
 const runPrompt = async () => {
   try {
     completion.value = ''
+    isLoadingCompletion.value = true
     const { newParsedPrompt } = parsePrompt(
       rawPrompt?.value,
       `{var}`,
@@ -42,7 +44,9 @@ const runPrompt = async () => {
       prompt: newParsedPrompt
     })
     completion.value = result.data
+    isLoadingCompletion.value = false
   } catch (error: unknown) {
+    isLoadingCompletion.value = false
     if (axios.isAxiosError(error))  {
       toast.error(error?.response?.data.message)
     } else {
