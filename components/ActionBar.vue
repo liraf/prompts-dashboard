@@ -16,7 +16,7 @@ import { useStateKeys } from '~/helpers/consts';
 
 defineEmits(['run'])
 
-const selectedModel = useState(useStateKeys.SELECTED_MODEL, () => '')
+const selectedModel = useState(useStateKeys.SELECTED_MODEL, () => 'text-davinci-003')
 
 const families = reactive([
   {
