@@ -1,7 +1,6 @@
 <template>
   <Card title="Preview" class="ml-2">
     <div class="whitespace-pre-wrap" v-html="previewPrompt" />
-    <Tokens />
   </Card>
 </template>
 

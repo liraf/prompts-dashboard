@@ -14,13 +14,15 @@
 </template>
 
 <script setup lang="ts">
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { toast } from 'vue3-toastify';
+import { parsePrompt } from '~/helpers';
 import { useStateKeys } from '~/helpers/consts';
 
 const variablesWithValues = reactive<{[key:string]: string}>({})
-const previewPrompt = useState<string>(useStateKeys.PREVIEW_PROMPT)
+const rawPrompt = useState<string>(useStateKeys.RAW_PROMPT)
 const selectedModel = useState(useStateKeys.SELECTED_MODEL)
+const completion = useState(useStateKeys.COMPLETION, () => '')
 
 const handleUpdateVariable = (variable: string, value: string) => {
   variablesWithValues[variable] = value
@@ -28,11 +30,18 @@ const handleUpdateVariable = (variable: string, value: string) => {
 
 const runPrompt = async () => {
   try {
+    completion.value = ''
+    const { newParsedPrompt } = parsePrompt(
+      rawPrompt?.value,
+      `{var}`,
+      variablesWithValues,
+      true
+    )
     const result = await axios.post('/api/completion', {
       model: selectedModel?.value,
-      prompt: previewPrompt?.value
+      prompt: newParsedPrompt
     })
-    console.log(result)
+    completion.value = result.data
   } catch (error: unknown) {
     if (axios.isAxiosError(error))  {
       toast.error(error?.response?.data.message)

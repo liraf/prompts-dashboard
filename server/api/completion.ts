@@ -19,8 +19,8 @@ export default defineEventHandler(async (event) => {
 
   try {
     const completion = await openai.createCompletion({
-      model,
-      prompt
+      model: model,
+      prompt: prompt
     })
     return completion.data.choices[0].text
   } catch (error: any) {

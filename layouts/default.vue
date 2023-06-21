@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen w-screen bg-blue-950">
-    <div class="container mx-auto px-16">
+    <div class="container mx-auto px-8">
       <slot />
     </div>
   </div>
