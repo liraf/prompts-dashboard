@@ -1,6 +1,6 @@
 <template>
   <button
-    class="bg-white text-blue-950 text-sm font-bold py-3 px-5 rounded hover:opacity-80 transition-all"
+    class="bg-white text-blue-950 text-sm font-bold py-3 px-5 rounded-2xl hover:opacity-80 transition-all uppercase tracking-wide"
     @click="$emit('click')"
     :disabled="loading"
   >
