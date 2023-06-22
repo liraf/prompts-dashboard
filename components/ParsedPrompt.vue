@@ -1,7 +1,7 @@
 <template>
   <div
     @click="() => $emit('click')"
-    class="min-h-[64px] w-full bg-blue-800 ring ring-blue-500 rounded-md text-white px-4 py-2 whitespace-pre-wrap"
+    class="min-h-[64px] w-full bg-blue-700 ring ring-blue-500 rounded-md text-white px-4 py-2 whitespace-pre-wrap leading-relaxed"
     v-html="parsedPrompt"
   />
 </template>

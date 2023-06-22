@@ -1,8 +1,8 @@
 <template>
   <Card>
-    <div class="flex items-center justify-between">
-      <div class="flex items-center w-1/2">
-        <CustomSelect class="w-1/2 mr-2" label="Model" :options="families" @change="(event) => selectedModel = event.target?.value"/>
+    <div class="flex items-end justify-between">
+      <div class="flex items-center w-3/4 md:w-1/2">
+        <CustomSelect class="w-full md:w-1/2 mr-2" label="Model" :options="families" @change="(event) => selectedModel = event.target?.value"/>
       </div>
       <div class="flex items-center justify-end w-1/2">
         <CustomButton @click="$emit('run')" :loading="isLoadingCompletion">RUN</CustomButton>
