@@ -13,6 +13,11 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'Prompts Dashboard',
+      meta: [{
+        name: 'description',
+        content: 'This is a prompt dashboard page which uses the Open AI API..'
+      }],
       link: [
         {
           rel: "preconnect",
