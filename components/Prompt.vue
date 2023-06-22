@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { useStateKeys } from '~/helpers/consts'
 
-const prompt = useState(useStateKeys.RAW_PROMPT, () => 'Given the following fruit, output the closest color hex value that matches the color of that fruit.\n\nFruit:\n{{ fruit }}\n\nColor hex string:\n')
+const prompt = useState(useStateKeys.RAW_PROMPT, () => 'Given the following code, output the closest programming language that matches the code.\n\nCode:\n{{ code }}\n\nProgramming language:\n')
 const isFocused = ref(false)
 const textareaRef = ref()
 </script>
