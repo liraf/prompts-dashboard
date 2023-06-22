@@ -1,6 +1,6 @@
 <template>
   <div class="text-white py-12">
-    <h2 class="mb-4 text-lg font-medium">Prompts Dashboard</h2>
+    <Headline tag="h1">Prompts Dashboard</Headline>
     <Prompt />
 
     <div class="flex flex-col md:flex-row mb-4">

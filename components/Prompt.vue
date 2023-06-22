@@ -11,7 +11,6 @@
       v-if="!isFocused"
       @click="() => isFocused = true"
     />
-    <Tokens />
   </Card>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full bg-white px-4 py-4 rounded-lg text-blue-950">
-    <h3 v-if="title" class="mb-6">{{ title }}</h3>
+  <div class="w-full bg-blue-800 px-8 py-6 rounded-3xl text-white">
+    <Headline v-if="title" tag="h3">{{ title }}</Headline>
     <slot />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
   <input
-    class="w-full bg-gray-100 rounded-md text-blue-950 px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500"
+    class="w-full bg-blue-800 text-white rounded-md px-4 py-2 focus:outline-none ring ring-blue-500"
   />
 </template>
